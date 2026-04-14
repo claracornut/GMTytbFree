@@ -17,3 +17,5 @@ flow:
       - type: console
         command: python measure_ytb_free.py
         note: "laying YouTube video"
+        read-notes-stdout: true   # ← active la lecture des timestamps
+
