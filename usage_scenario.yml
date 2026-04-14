@@ -1,4 +1,4 @@
-name: "YouTube free" 
+name: "YouTube free"
 author: "Arturo + Clara"
 description: Measuring youtube free
 version: 1
@@ -17,5 +17,4 @@ flow:
       - type: console
         command: python measure_ytb_free.py
         note: "laying YouTube video"
-        read-notes-stdout: true   # ← active la lecture des timestamps
-
+        read-notes-stdout: true   # enables timestamp reading

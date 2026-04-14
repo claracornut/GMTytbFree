@@ -18,7 +18,7 @@ python3 runner.py --uri ~/gmt --name "testUblock"
 
 ### Réinitialiser Docker
 ```bash
-# Restart les containers
+# Restart les containers (être dans le dossier green-metrics-tool)
 docker restart green-coding-gunicorn-container
 docker restart green-coding-nginx-container
 
