@@ -1,6 +1,7 @@
 # measure.py - YouTube Free
 from playwright.sync_api import sync_playwright
 import time
+
 def timestamp_us():
     """Retourne le timestamp actuel en microsecondes"""
     return int(time.time() * 1_000_000)
@@ -29,8 +30,11 @@ def watch_video(page, url, duration, label):
 
 def run():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        context = browser.new_context()
+        browser = p.chromium.launch(headless=True, args=["--autoplay-policy=no-user-gesture-required"])
+        
+        # Tell Playwright to load your free session
+        # Since GMT copies the files to /app, this is the path:
+        context = browser.new_context(storage_state="/app/free_state.json")
         page = context.new_page()
 
         watch_video(page, 
@@ -45,6 +49,7 @@ def run():
                     "https://youtu.be/Y4J_NYAQQEQ?si=BLcMRRYQMqy0-23l", 
                     181, "video3")
 
+        context.close()
         browser.close()
 
 if __name__ == "__main__":
