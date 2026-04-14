@@ -32,7 +32,7 @@ def run():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=["--autoplay-policy=no-user-gesture-required"])
         
-        # Tell Playwright to load your Premium session
+        # Tell Playwright to load your free session
         # Since GMT copies the files to /app, this is the path:
         context = browser.new_context(storage_state="/app/free_state.json")
         page = context.new_page()
@@ -51,6 +51,8 @@ def run():
 
         context.close()
         browser.close()
+        time.sleep(5)  # let powermetrics finish properly
+
 
 if __name__ == "__main__":
     run()
